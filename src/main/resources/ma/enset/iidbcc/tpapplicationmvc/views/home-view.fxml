@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="546.0" prefWidth="960.0">
          <children>
-            <TabPane fx:id="cabinetTabs" layoutX="15.0" layoutY="51.0" prefHeight="485.0" prefWidth="906.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="cabinetTabs" layoutY="47.0" prefHeight="485.0" prefWidth="919.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Gestion des Patients">
                   <fx:include source="patient-view.fxml" />
