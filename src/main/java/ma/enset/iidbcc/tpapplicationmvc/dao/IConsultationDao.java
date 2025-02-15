@@ -11,5 +11,6 @@ public interface IConsultationDao extends Dao<Consultation, Long> {
     List<Consultation> findByDateBetween(Date start, Date end);
     List<Consultation> findByPatientIdAndDate(Long patientId, Date date);
     List<Consultation> findByPatientIdAndDateBetween(Long patientId, Date start, Date end);
+    List<Consultation> findAllByQuery(String query);
 
 }

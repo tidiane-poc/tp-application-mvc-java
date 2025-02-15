@@ -4,6 +4,8 @@ import ma.enset.iidbcc.tpapplicationmvc.dao.IPatientDao;
 import ma.enset.iidbcc.tpapplicationmvc.entites.Patient;
 import ma.enset.iidbcc.tpapplicationmvc.services.IPatientService;
 
+import java.util.List;
+
 public class PatientServiceImpl extends BaseServiceImpl<Patient, Long> implements IPatientService {
     private final IPatientDao dao;
 
@@ -35,5 +37,10 @@ public class PatientServiceImpl extends BaseServiceImpl<Patient, Long> implement
     @Override
     public Patient findByEmail(String email) {
         return dao.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public List<Patient> findByQuery(String query) {
+        return dao.findByQuery(query);
     }
 }

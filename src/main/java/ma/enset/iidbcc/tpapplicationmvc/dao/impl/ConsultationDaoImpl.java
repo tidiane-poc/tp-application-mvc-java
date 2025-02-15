@@ -28,7 +28,7 @@ public class ConsultationDaoImpl extends DaoDefaultImpl<Consultation, Long> impl
     @Override
     protected PreparedStatement insertStatement(Consultation entity) {
         return prepareStatement(
-                String.format("INSERT INTO CONSULTATIONS(%s, %s, %s) VALUES(?, ?)", CONSULTATION_DATE_ATTRIBUTE, DESCRIPTION_ATTRIBUTE, PATIENT_ID_ATTRIBUTE),
+                String.format("INSERT INTO CONSULTATIONS(%s, %s, %s) VALUES(?, ?, ?)", CONSULTATION_DATE_ATTRIBUTE, DESCRIPTION_ATTRIBUTE, PATIENT_ID_ATTRIBUTE),
                 entity.getDate(), entity.getDescription(), entity.getPatient().getId()
         );
     }
@@ -104,4 +104,12 @@ public class ConsultationDaoImpl extends DaoDefaultImpl<Consultation, Long> impl
         return executeQueryStatement(preparedStatement);
     }
 
+    public List<Consultation> findAllByQuery(String query) {
+        String request = String.format("""
+                SELECT C.ID, C.CONSULTATION_DATE, C.DESCRIPTION, C.PATIENT_ID FROM CONSULTATIONS C
+                LEFT JOIN PATIENTS P ON C.PATIENT_ID=P.ID
+                WHERE C.DESCRIPTION LIKE '%%%s%%' OR P.NOM LIKE '%%%s%%' OR P.PRENOM LIKE '%%%s%%' OR P.EMAIL LIKE '%%%s%%' OR P.TEL LIKE '%%%s%%'
+                """, query, query, query, query, query);
+        return executeQueryStatement(prepareStatement(request));
+    }
 }

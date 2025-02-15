@@ -1,6 +1,6 @@
 package ma.enset.iidbcc.tpapplicationmvc.entites;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Consultation {
     private long id;

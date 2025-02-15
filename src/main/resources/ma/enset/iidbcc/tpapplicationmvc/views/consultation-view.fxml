@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="consultationView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.iidbcc.tpapplicationmvc.controllers.ConsultationController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <BorderPane prefHeight="472.0" prefWidth="897.0">
+         <left>
+            <AnchorPane prefHeight="472.0" prefWidth="272.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="17.0" layoutY="65.0" prefHeight="394.0" prefWidth="274.0">
+                     <children>
+                        <Label layoutX="13.0" layoutY="47.0" text="Date" />
+                        <Label layoutX="13.0" layoutY="100.0" text="Patient" />
+                        <Label layoutX="13.0" layoutY="150.0" text="Description" />
+                        <Button fx:id="saveBtn" layoutX="14.0" layoutY="296.0" mnemonicParsing="false" onAction="#save" prefHeight="33.0" prefWidth="134.0" style="-fx-background-color: #a4d724;" text="Enregistrer" textFill="#f8f5f5">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font></Button>
+                        <TextArea fx:id="descriptionTextArea" layoutX="14.0" layoutY="174.0" prefHeight="99.0" prefWidth="247.0" />
+                        <ComboBox fx:id="patientSelector" layoutX="14.0" layoutY="117.0" prefHeight="29.0" prefWidth="246.0" />
+                        <DatePicker fx:id="consultationDatePicker" layoutX="14.0" layoutY="67.0" prefHeight="30.0" prefWidth="243.0" />
+                        <Button fx:id="deleteBtn" layoutX="165.0" layoutY="296.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="96.0" style="-fx-background-color: red;" text="Supprimer" textFill="#f8f5f5">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="14.0" prefHeight="46.0" prefWidth="292.0">
+                     <children>
+                        <Label layoutX="28.0" layoutY="9.0" prefHeight="28.0" prefWidth="256.0" styleClass="h4" text="Gestion des consultations">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Line endX="168.5" endY="1.0" layoutX="116.0" layoutY="64.0" startX="-86.5" startY="1.0" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="525.0" prefWidth="631.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="consultationTableView" layoutX="6.0" layoutY="59.0" prefHeight="407.0" prefWidth="612.0">
+                    <columns>
+                      <TableColumn fx:id="idTableColumn" prefWidth="43.0" text="ID" />
+                      <TableColumn fx:id="dateTableColumn" prefWidth="125.0" styleClass="fx-" text="Date" />
+                        <TableColumn fx:id="patientNameTableColumn" prefWidth="96.0" text="Nom Patient" />
+                        <TableColumn fx:id="patientPhoneNumberTableColumn" prefWidth="117.0" text="Tel Patient" />
+                        <TableColumn fx:id="descriptionTableColumn" prefWidth="242.0" text="Description" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchTextField" layoutX="352.0" layoutY="28.0" prefHeight="26.0" prefWidth="186.0" promptText="Cherchez par mot cle" />
+                  <Button fx:id="refreshBtn" layoutX="554.0" layoutY="28.0" mnemonicParsing="false" text="Refresh" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

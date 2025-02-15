@@ -36,27 +36,7 @@ public class ConsultationServiceImpl extends BaseServiceImpl<Consultation, Long>
     }
 
     @Override
-    public List<Consultation> findByPatientId(Long id) {
-        return dao.findByPatientId(id);
-    }
-
-    @Override
-    public List<Consultation> findByDate(Date date) {
-        return dao.findByDate(date);
-    }
-
-    @Override
-    public List<Consultation> findByDateBetween(Date start, Date end) {
-        return dao.findByDateBetween(start, end);
-    }
-
-    @Override
-    public List<Consultation> findByPatientIdAndDate(Long patientId, Date date) {
-        return dao.findByPatientIdAndDate(patientId, date);
-    }
-
-    @Override
-    public List<Consultation> findByPatientIdAndDateBetween(Long patientId, Date start, Date end) {
-        return dao.findByPatientIdAndDateBetween(patientId, start, end);
+    public List<Consultation> findAllByQuery(String query) {
+        return dao.findAllByQuery(query);
     }
 }

@@ -7,6 +7,7 @@ import ma.enset.iidbcc.tpapplicationmvc.entites.Patient;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 public class PatientDaoImpl extends DaoDefaultImpl<Patient, Long> implements IPatientDao {
@@ -73,5 +74,11 @@ public class PatientDaoImpl extends DaoDefaultImpl<Patient, Long> implements IPa
         );
         var items = executeQueryStatement(statement);
         return items.stream().findFirst();
+    }
+
+    @Override
+    public List<Patient> findByQuery(String query) {
+        String sql = "SELECT * FROM PATIENTS WHERE NOM LIKE '%" + query + "%' OR PRENOM LIKE '%" + query + "%' OR EMAIL LIKE '%" + query + "%' OR TEL LIKE '%" + query + "%'";
+        return executeQueryStatement(prepareStatement(sql));
     }
 }
