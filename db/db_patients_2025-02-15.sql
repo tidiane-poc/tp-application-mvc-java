@@ -1,0 +1,89 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 5446
+#
+# https://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 8.3.0)
+# Database: db_patients
+# Generation Time: 2025-02-15 13:23:31 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table CONSULTATIONS
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `CONSULTATIONS`;
+
+CREATE TABLE `CONSULTATIONS` (
+  `ID` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `CONSULTATION_DATE` date DEFAULT NULL,
+  `DESCRIPTION` text,
+  `PATIENT_ID` bigint unsigned NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `PATIENT_ID` (`PATIENT_ID`),
+  CONSTRAINT `consultations_ibfk_1` FOREIGN KEY (`PATIENT_ID`) REFERENCES `PATIENTS` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `CONSULTATIONS` WRITE;
+/*!40000 ALTER TABLE `CONSULTATIONS` DISABLE KEYS */;
+
+INSERT INTO `CONSULTATIONS` (`ID`, `CONSULTATION_DATE`, `DESCRIPTION`, `PATIENT_ID`)
+VALUES
+	(1,'2025-02-01','Test d\'ajout',2),
+	(2,'2025-02-10','Consultation simple',6),
+	(3,'2025-02-06','Des',7),
+	(4,'2025-02-10','Une consultation pour le rhume',8);
+
+/*!40000 ALTER TABLE `CONSULTATIONS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table PATIENTS
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PATIENTS`;
+
+CREATE TABLE `PATIENTS` (
+  `ID` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `NOM` varchar(255) DEFAULT NULL,
+  `PRENOM` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `TEL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `EMAIL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `PATIENTS` WRITE;
+/*!40000 ALTER TABLE `PATIENTS` DISABLE KEYS */;
+
+INSERT INTO `PATIENTS` (`ID`, `NOM`, `PRENOM`, `TEL`, `EMAIL`)
+VALUES
+	(1,'Diallo','Tidiane','0663013474','tidia@gmail.com'),
+	(2,'DIALLO','Amadou','0661013474','amadou@gmail.com'),
+	(5,'Balde','Tidiane','0603030303','tidia@gmail.com'),
+	(6,'Ousmane','Idriss','050606060','ous@gmail.com'),
+	(7,'Mamadou','Abdel','02030404','mam@gmail.com'),
+	(8,'DIALLO','Oumar','0420202020','oumar@gmail.com');
+
+/*!40000 ALTER TABLE `PATIENTS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
