@@ -16,6 +16,7 @@ public class Application extends javafx.application.Application {
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Medical Care Application");
         stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 
